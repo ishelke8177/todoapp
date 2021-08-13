@@ -1,0 +1,26 @@
+{% extends "task/base.html" %}
+
+{% block base %}
+
+<div class="text-center bg-light mt-4 p-4">
+    <h1>Please Login</h1>
+    <div class="row">
+    <form action="{% url 'task:user_login' %}" method="POST">
+        {% csrf_token %}
+
+        <label for="username">Username</label>
+        
+        <input type="text" name="username" placeholder="Enter Username">
+        <br>
+        <br>
+        <label for="password">Password</label>
+
+        <input type="password" name="password" placeholder="Enter Password">
+        <br>
+        <br>
+        <input type="submit" value="Login" class="btn btn-outline-secondary">
+    </form>
+</div>
+</div>
+
+{% endblock %}

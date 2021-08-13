@@ -1,0 +1,47 @@
+{% extends "task/base.html" %}
+
+{% block base %}
+
+    {% if user.is_authenticated %}
+        <div class="text-center p-5">
+            <form action="{% url 'task:add_todo' %}" method="POST">
+                {% csrf_token %}
+                {{ task_form.as_p }}
+                <hr>
+                <input type="submit" value="Add" class="btn btn-info">
+            </form>
+
+                <!--Show all the tasks to be completed-->
+                <table class="center">
+                    <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    </tr>
+
+                    <div class="item-row">
+                    {% for todo in todos %}
+                        {% if todo.completed == False %}
+                            <tr>
+                                <td><label><h2 style="font-size:23px;">{{ todo }}</h2></label></td>
+                                <td><a href="{% url 'task:update_task' pk=todo.pk %}" class="btn btn-sm btn-warning">Update</a></td>                                
+                                <td><a href="{% url 'task:delete_task' pk=todo.pk %}" class="btn btn-sm btn-danger">Delete</a></td>                                   
+                                <td><a href="{% url 'task:complete_task' pk=todo.pk %}">&check;</a></td>
+                            </tr>
+                        {% endif %}        
+                    {% endfor %}
+                    
+                    </div>
+                </table>
+            
+        </div>
+
+    {% else %}
+        <div class="text-center mt-5">
+            <h2>Welcome to the todo application!!!!</h2>
+            <p>To see your todo list you must login first.</p>
+        </div>
+    {% endif %}
+
+{% endblock %}

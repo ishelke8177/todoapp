@@ -1,0 +1,1 @@
+web: gnicorn todoapp.wsgi --log-file -

@@ -1,0 +1,14 @@
+{% extends "task/base.html" %}
+
+{% block base %}
+
+    <h2 class="text-center mt-3" style="font-size:22px;">Tasks you have completed so far.</h2>
+    <hr>
+
+    <div class="slide-right" style="margin-left:555px">
+        {% for todo in todos %}
+            <h2 style="font-size:20px;">{{ todo }}</h2>
+        {% endfor %}
+    </div>
+
+{% endblock %}
