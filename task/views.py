@@ -1,6 +1,4 @@
 from django.shortcuts import redirect, render
-from django.contrib.auth.views import LoginView
-from django.views.generic import TemplateView, CreateView
 from django.contrib.auth import authenticate, login as auth_login, logout
 from django.contrib.auth import logout
 from django.http import HttpResponseRedirect, HttpResponse
