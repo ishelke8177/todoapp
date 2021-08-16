@@ -5,10 +5,14 @@
     <h2 class="text-center mt-3" style="font-size:22px;">Tasks you have completed so far.</h2>
     <hr>
 
-    <div class="slide-right" style="margin-left:555px">
-        {% for todo in todos %}
-            <h2 style="font-size:20px;">{{ todo }}</h2>
-        {% endfor %}
-    </div>
+    {% if todos|length == 0 %}
+        <p class="text-center" style="font-size: 20px;">You have not finished any task yet.</p>
+    {% else %}
+        <div class="slide-right" style="margin-left:555px">
+            {% for todo in todos %}
+                <h2 style="font-size:20px;">{{ todo }}</h2>
+            {% endfor %}
+        </div>
+    {% endif %}
 
 {% endblock %}
